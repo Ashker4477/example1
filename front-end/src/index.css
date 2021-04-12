@@ -6,23 +6,26 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.card{
+.card {
   width: 100%;
   max-width: 480px;
+  justify-content: center;
 }
 .d-flex {
   margin-top: 1rem;
   justify-content: center;
+  align-items: center;
 }
-ul{
-  text-align: center;
+ul {
   width: 100%;
   max-width: 500px;
+  text-align: center;
 }
-li{
+li {
   margin: 1rem;
   padding: 1rem;
   background-color: #fff;
+  
 }
 
 h2 {
@@ -34,60 +37,67 @@ h2 {
 form {
   padding: 1rem;
   margin: 1rem;
-  max-width: 1000px;
   width: 100%;
+  max-width: 30rem;
 }
-select{
+select {
   width: 100%;
   max-width: 325px;
+  padding: 1rem;
 }
-.signin{
+.signin {
   display: flex;
   min-height: 100vh;
   justify-content: center;
   align-items: center;
   background-color: #456;
 }
-.home{ 
+.home {
+  display: flex;
   min-height: 100vh;
   justify-content: center;
+  align-items: center;
   background-color: rgb(10, 204, 238);
-} 
+}
 
 i {
-  margin: 0px;
-  padding: 1rem;
-  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding: 1.1rem;
+  font-size: 1.1rem;
   color: #ffff;
-  background-color: #1a6dda;
+  background-color: #0f6eeb;
   position: sticky;
 }
 
-input [type=checkbox]{
+input [type="checkbox"] {
   padding: 0.1rem;
-  margin:0;
+  margin: 0;
+  width: 100%;
 }
-input[type=email],input[type=password],input[type=text]{
+input[type="email"],
+input[type="password"],
+input[type="text"] {
   padding: 0.75rem;
   padding-left: 0px;
   margin-left: 0px;
+  margin-bottom: 1rem;
   max-width: 380px;
   width: 100%;
 }
 
 button {
   color: #fff;
-  padding: 0.5rem;
-  background-color: #1a6dda;
+  padding: 0.8rem;
+  background-color: #1176e9;
   border: 1px solid #1a6dda;
   margin-bottom: 0px;
+  width: 100%;
 }
-label{
+
+label {
   padding: 1rem;
-  margin: 0;
-  background-color: #f6f6f6;
-}
-.row.center{
-  justify-content: center;
-  margin: 0;
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  justify-items: center;
+  text-align: center;
 }

@@ -24,7 +24,7 @@ function HomeScreen() {
     e.preventDefault();
     // console.log(name, car, agree);
     setItem([...item, { name, car, agree }]);
-    // console.log(item);
+    console.log(item);
   };
 
   const signoutHandler = (e) => {
@@ -33,8 +33,8 @@ function HomeScreen() {
   };
   return (
     <div className="home">
-      <div className="d-flex">
-        <form onSubmit={submitHandler} className="card">
+      <form onSubmit={submitHandler}>
+        <div className="card">
           <h2>HomeScreen</h2>
           <div className="card-body">
             <div className="d-flex">
@@ -72,24 +72,26 @@ function HomeScreen() {
                 <option>Audi</option>
               </select>
             </div>
-            <div className="row center mb-2">
-              <input type="submit" value="Submit"></input>
-            </div>
-            <div className="row center mb-2">
-              <button onClick={signoutHandler}>Signout</button>
+            <div className="button">
+              <button type="submit" value="Submit">
+                Submit
+              </button>
             </div>
           </div>
-        </form>
-      </div>
-      <div className="row center">
-        <ul>
-          {item.map((data, index) => (
-            <li key={index}>
-              {data.name} {data.car} {data.agree}
-            </li>
-          ))}
-        </ul>
-      </div>
+          <div className="signout">
+            <button onClick={signoutHandler}>Signout</button>
+          </div>
+        </div>
+        <div className="d-flex">
+          <ul>
+            {item.map((data, index) => (
+              <li key={index}>
+                {data.name} {data.car} {data.agree}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </form>
     </div>
   );
 }

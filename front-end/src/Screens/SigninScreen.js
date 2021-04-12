@@ -27,36 +27,35 @@ function SigninScreen() {
 
   return (
     <div className="signin">
-      <form className="mt-5 mr-auto ml-auto" onSubmit={submitHandler}>
-        {error ? <MessageBox >{error}</MessageBox> : null}
-        <div className="d-flex">
-          <div className="card">
-            <h2>Login</h2>
-            <div className="card-body">
-              <div className="column">
-                <div className="d-flex">
-                  <i className="fa fa-user"></i>
-                  <input
-                    type="email"
-                    placeholder="username or email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="d-flex">
-                  <i className="fa fa-lock"></i>
-                  <input
-                    type="password"
-                    placeholder="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-                </div>
+      <form onSubmit={submitHandler}>
+        {error ? <MessageBox>{error}</MessageBox> : null}
+
+        <div className="card">
+          <h2>Login</h2>
+          <div className="card-body">
+            <div className="column">
+              <div className="d-flex">
+                <i className="fa fa-user"></i>
+                <input
+                  type="email"
+                  placeholder=" username or email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
-              {loading ? <LoadingBox /> : null}
+              <div className="d-flex">
+                <i className="fa fa-lock"></i>
+                <input
+                  type="password"
+                  placeholder=" password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
             </div>
-            <button type="submit">Login</button>
+            {loading ? <LoadingBox /> : null}
           </div>
+          <button type="submit">Login</button>
         </div>
       </form>
     </div>
