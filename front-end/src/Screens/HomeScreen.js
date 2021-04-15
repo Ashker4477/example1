@@ -8,7 +8,7 @@ function HomeScreen() {
   const [one, setOne] = useState(false);
   const [two, setTwo] = useState(false);
   const [three, setThree] = useState(false);
-  // const [item, setItem] = useState([]);
+  const [item, setItem] = useState([]);
 
   const showCheckboxes = (e) => {
     e.preventDefault();
@@ -23,7 +23,26 @@ function HomeScreen() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    setItem()
+    if (one && !two && !three) {
+      const pack = "value added for 1";
+      setItem([...item, { pack }]);
+    }
+    if (!one && two && !three) {
+      const pack = "value added for 2";
+      setItem([...item, { pack }]);
+    }
+    if (!one && !two && three) {
+      const pack = "value added for 3";
+      setItem([...item, { pack }]);
+    }
+    if (one && two && three) {
+      const pack1 = "value added for 1";
+      const pack2 = "value added for 2";
+      const pack3 = "value added for 3";
+      const pack = { pack1, pack2, pack3 };
+      setItem([...item, {pack}]);
+    }
+    console.log(item);
   };
   return (
     <div className="home">
@@ -43,7 +62,7 @@ function HomeScreen() {
                 value={one}
                 onChange={(e) => setOne(e.target.checked)}
               />
-              First checkbox
+              value added for 1
             </label>
             <label htmlFor="two">
               <input
@@ -52,7 +71,7 @@ function HomeScreen() {
                 value={two}
                 onChange={(e) => setTwo(e.target.checked)}
               />
-              Second checkbox
+              value added for 2
             </label>
             <label htmlFor="three">
               <input
@@ -61,7 +80,7 @@ function HomeScreen() {
                 value={three}
                 onChange={(e) => setThree(e.target.checked)}
               />
-              Third checkbox
+              value added for 3
             </label>
           </div>
         </div>
@@ -69,6 +88,19 @@ function HomeScreen() {
           <button type="submit">Save</button>
         </div>
       </form>
+      
+        <tr>
+            <th>Sl.No:</th>
+            <th>Description</th>
+          </tr>(
+           { item.pack ? item.map((i, v) => {
+              <tr>
+                <td>{i + 1}</td>
+                <td>{v.pack}</td>
+              </tr>;
+            }): null}
+          )
+        
     </div>
   );
 }
