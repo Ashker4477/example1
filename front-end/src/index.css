@@ -6,11 +6,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.card {
-  width: 100%;
-  max-width: 480px;
-  justify-content: center;
-}
 .d-flex {
   margin-top: 1rem;
   justify-content: center;
@@ -25,7 +20,6 @@ li {
   margin: 1rem;
   padding: 1rem;
   background-color: #fff;
-  
 }
 
 h2 {
@@ -56,8 +50,7 @@ select {
   display: flex;
   min-height: 100vh;
   justify-content: center;
-  align-items: center;
-  background-color: rgb(10, 204, 238);
+  background-color: #fdfbfb;
 }
 
 i {
@@ -69,18 +62,13 @@ i {
   position: sticky;
 }
 
-input [type="checkbox"] {
-  padding: 0.1rem;
-  margin: 0;
-  width: 100%;
-}
 input[type="email"],
 input[type="password"],
 input[type="text"] {
   padding: 0.75rem;
   padding-left: 0px;
   margin-left: 0px;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   max-width: 380px;
   width: 100%;
 }
@@ -90,14 +78,49 @@ button {
   padding: 0.8rem;
   background-color: #1176e9;
   border: 1px solid #1a6dda;
-  margin-bottom: 0px;
-  width: 100%;
+  margin-top: 1rem;
+  width: 100px;
 }
+
 
 label {
   padding: 1rem;
-  margin-bottom: 20px;
+  margin: 0;
   background-color: #ffffff;
   justify-items: center;
   text-align: center;
+}
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  margin-top: 5rem;
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
 }

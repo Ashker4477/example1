@@ -4,92 +4,68 @@ import { useHistory } from "react-router";
 import { signout } from "../Actions/userActions";
 
 function HomeScreen() {
-  const [name, setName] = useState("");
-  const [car, setCar] = useState("Volvo");
-  const [agree, setAgree] = useState(false);
-  const [item, setItem] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const [one, setOne] = useState(false);
+  const [two, setTwo] = useState(false);
+  const [three, setThree] = useState(false);
 
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
-
-  useEffect(() => {
-    if (!userInfo) {
-      history.push("/signin");
+  const showCheckboxes = (e) => {
+    e.preventDefault();
+    const checkboxes = document.getElementById("checkboxes");
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      setExpanded(true);
+    } else {
+      checkboxes.style.display = "none";
+      setExpanded(false);
     }
-  }, [history, userInfo]);
-
+  };
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(name, car, agree);
-    setItem([...item, { name, car, agree }]);
-    console.log(item);
-  };
-
-  const signoutHandler = (e) => {
-    e.preventDefault();
-    dispatch(signout());
+    
   };
   return (
     <div className="home">
       <form onSubmit={submitHandler}>
-        <div className="card">
-          <h2>HomeScreen</h2>
-          <div className="card-body">
-            <div className="d-flex">
-              <label htmlFor="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                placeholder="Enter Name"
-                required
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              ></input>
-            </div>
-            <div className="d-flex" id="check">
+        <div className="multiselect">
+          <div className="selectBox" onClick={showCheckboxes}>
+            <select>
+              <option>Select an option</option>
+            </select>
+            <div className="overSelect"></div>
+          </div>
+          <div id="checkboxes">
+            <label htmlFor="one">
               <input
                 type="checkbox"
-                id="agree"
-                required
-                value={agree}
-                onChange={(e) => setAgree(e.target.checked)}
+                id="one"
+                value={one}
+                onChange={(e) => setOne(e.target.checked)}
               />
-              <span htmlFor="agree">Do you have a Car!.</span>
-            </div>
-            <div className="d-flex box">
-              <label htmlFor="cars">Choose a car:</label>
-              <select
-                name="cars"
-                id="cars"
-                required
-                onChange={(e) => setCar(e.target.value)}
-              >
-                <option>Volvo</option>
-                <option>Saab</option>
-                <option>Opel</option>
-                <option>Audi</option>
-              </select>
-            </div>
-            <div className="button">
-              <button type="submit" value="Submit">
-                Submit
-              </button>
-            </div>
-          </div>
-          <div className="signout">
-            <button onClick={signoutHandler}>Signout</button>
+              First checkbox
+            </label>
+            <label htmlFor="two">
+              <input
+                type="checkbox"
+                id="two"
+                value={two}
+                onChange={(e) => setTwo(e.target.checked)}
+              />
+              Second checkbox
+            </label>
+            <label htmlFor="three">
+              <input
+                type="checkbox"
+                id="three"
+                value={three}
+                onChange={(e) => setThree(e.target.checked)}
+              />
+              Third checkbox
+            </label>
           </div>
         </div>
-        <div className="d-flex">
-          <ul>
-            {item.map((data, index) => (
-              <li key={index}>
-                {data.name} {data.car} {data.agree}
-              </li>
-            ))}
-          </ul>
+        <div className="primary">
+          <button type="submit">Save</button>
         </div>
       </form>
     </div>
