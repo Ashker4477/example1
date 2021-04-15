@@ -8,6 +8,7 @@ function HomeScreen() {
   const [one, setOne] = useState(false);
   const [two, setTwo] = useState(false);
   const [three, setThree] = useState(false);
+  // const [item, setItem] = useState([]);
 
   const showCheckboxes = (e) => {
     e.preventDefault();
@@ -22,7 +23,7 @@ function HomeScreen() {
   };
   const submitHandler = (e) => {
     e.preventDefault();
-    
+    setItem()
   };
   return (
     <div className="home">
