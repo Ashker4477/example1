@@ -21,16 +21,17 @@ function HomeScreen() {
   const history = useHistory();
   const userlog = localStorage.getItem("userlog");
 
+  const signoutHandler = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("userlog");
+    history.push('/')
+  };
   useEffect(() => {
     if (!userlog) {
       history.push("/signin");
     }
   }, [history, userlog]);
 
-  const signoutHandler = (e) => {
-    e.preventDefault();
-    localStorage.removeItem("userlog");
-  };
 
   const handleChange = useCallback((e) => {
     setValues((prevVal) => {
