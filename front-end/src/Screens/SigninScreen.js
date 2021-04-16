@@ -29,16 +29,15 @@ function SigninScreen() {
     <div className="signin">
       <form onSubmit={submitHandler}>
         {error ? <MessageBox>{error}</MessageBox> : null}
-
         <div className="card">
           <h2>Login</h2>
           <div className="card-body">
-            <div className="column">
+            <div className="col">
               <div className="d-flex">
                 <i className="fa fa-user"></i>
                 <input
                   type="email"
-                  placeholder=" username or email"
+                  placeholder="username or email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -47,16 +46,16 @@ function SigninScreen() {
                 <i className="fa fa-lock"></i>
                 <input
                   type="password"
-                  placeholder=" password"
+                  placeholder="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
             </div>
+            </div>
             {loading ? <LoadingBox /> : null}
-          </div>
           <button type="submit">Login</button>
-        </div>
+          </div>
       </form>
     </div>
   );

@@ -24,7 +24,7 @@ function HomeScreen() {
   const dispatch = useDispatch();
 
   const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  const { userInfo } = userSignin;
 
   useEffect(() => {
     if (!userInfo) {
@@ -34,8 +34,8 @@ function HomeScreen() {
 
   const signoutHandler = (e) => {
     e.preventDefault();
-    console.log("signout");
-    dispatch(signout);
+    // console.log("signout");
+    dispatch(signout());
   };
 
   const handleChange = useCallback((e) => {
@@ -69,72 +69,70 @@ function HomeScreen() {
   };
 
   return (
-    <div className="center">
-      <div className="row">
-        <form onSubmit={submitHandler}>
-          <div className="multiselect">
-            <div className="selectBox" onClick={showCheckboxes}>
-              <select>
-                <option>Select an option</option>
-              </select>
-              <div className="overSelect"></div>
-            </div>
-            <div id="checkboxes">
-              <label htmlFor="one">
-                <input
-                  type="checkbox"
-                  name="one"
-                  value="value added for 1 "
-                  checked={values.one.checked}
-                  onChange={handleChange}
-                />
-                value added for 1
-              </label>
-              <label htmlFor="two">
-                <input
-                  type="checkbox"
-                  name="two"
-                  value="value added for 2 "
-                  checked={values.two.checked}
-                  onChange={handleChange}
-                />
-                value added for 2
-              </label>
-              <label htmlFor="three">
-                <input
-                  type="checkbox"
-                  name="three"
-                  value="value added for 3 "
-                  checked={values.three.checked}
-                  onChange={handleChange}
-                />
-                value added for 3
-              </label>
-            </div>
+    <div className="row">
+      <form onSubmit={submitHandler}>
+        <div className="multiselect">
+          <div className="selectBox" onClick={showCheckboxes}>
+            <select>
+              <option>Select an option</option>
+            </select>
+            <div className="overSelect"></div>
           </div>
-          <div className="primary">
-            <button type="submit">Save</button>
+          <div id="checkboxes">
+            <label htmlFor="one">
+              <input
+                type="checkbox"
+                name="one"
+                value="value added for 1 "
+                checked={values.one.checked}
+                onChange={handleChange}
+              />
+              <strong>value added for 1</strong>
+            </label>
+            <label htmlFor="two">
+              <input
+                type="checkbox"
+                name="two"
+                value="value added for 2 "
+                checked={values.two.checked}
+                onChange={handleChange}
+              />
+              <strong>value added for 2</strong>
+            </label>
+            <label htmlFor="three">
+              <input
+                type="checkbox"
+                name="three"
+                value="value added for 3 "
+                checked={values.three.checked}
+                onChange={handleChange}
+              />
+              <strong>value added for 3</strong>
+            </label>
           </div>
-        </form>
-        {item ? (
-          <table>
-            <tbody>
-              <tr>
-                <th>Sl.No</th>
-                <th>Description</th>
-              </tr>
-              {item.map((ite, index) => {
-                return (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>{ite}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        ) : null}
-      </div>
+        </div>
+        <div className="primary">
+          <button type="submit">Save</button>
+        </div>
+      </form>
+      {item ? (
+        <table>
+          <tbody>
+            <tr>
+              <th>Sl.No</th>
+              <th>Description</th>
+            </tr>
+            {item.map((ite, index) => {
+              return (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>{ite}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      ) : null}
       <div>
         <button onClick={signoutHandler}>Signout</button>
       </div>
