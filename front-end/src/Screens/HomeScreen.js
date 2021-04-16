@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { signout } from "../Actions/userActions";
 
 function HomeScreen() {
   const [expanded, setExpanded] = useState(false);
@@ -21,21 +19,17 @@ function HomeScreen() {
     },
   });
   const history = useHistory();
-  const dispatch = useDispatch();
-
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo } = userSignin;
+  const userlog = localStorage.getItem("userlog");
 
   useEffect(() => {
-    if (!userInfo) {
+    if (!userlog) {
       history.push("/signin");
     }
-  }, [history, userInfo]);
+  }, [history, userlog]);
 
   const signoutHandler = (e) => {
     e.preventDefault();
-    // console.log("signout");
-    dispatch(signout());
+    localStorage.removeItem("userlog");
   };
 
   const handleChange = useCallback((e) => {
@@ -65,56 +59,60 @@ function HomeScreen() {
       .filter((ob) => ob[1].checked)
       .map((ob) => ob[1].value);
     setItem([...item, obArray]);
-    console.log(item);
   };
 
   return (
-    <div className="row">
+    <div className="row center">
       <form onSubmit={submitHandler}>
-        <div className="multiselect">
-          <div className="selectBox" onClick={showCheckboxes}>
-            <select>
-              <option>Select an option</option>
-            </select>
-            <div className="overSelect"></div>
+        <div className="box">
+          <div className="multiselect">
+            <div className="selectBox" onClick={showCheckboxes}>
+              <select>
+                <option>Select an option</option>
+              </select>
+              <div className="overSelect"></div>
+            </div>
+            <div id="checkboxes">
+              <label htmlFor="one">
+                <input
+                  type="checkbox"
+                  name="one"
+                  value="value added for 1 "
+                  checked={values.one.checked}
+                  onChange={handleChange}
+                />
+                <strong>value added for 1</strong>
+              </label>
+              <label htmlFor="two">
+                <input
+                  type="checkbox"
+                  name="two"
+                  value="value added for 2 "
+                  checked={values.two.checked}
+                  onChange={handleChange}
+                />
+                <strong>value added for 2</strong>
+              </label>
+              <label htmlFor="three">
+                <input
+                  type="checkbox"
+                  name="three"
+                  value="value added for 3 "
+                  checked={values.three.checked}
+                  onChange={handleChange}
+                />
+                <strong>value added for 3</strong>
+              </label>
+            </div>
           </div>
-          <div id="checkboxes">
-            <label htmlFor="one">
-              <input
-                type="checkbox"
-                name="one"
-                value="value added for 1 "
-                checked={values.one.checked}
-                onChange={handleChange}
-              />
-              <strong>value added for 1</strong>
-            </label>
-            <label htmlFor="two">
-              <input
-                type="checkbox"
-                name="two"
-                value="value added for 2 "
-                checked={values.two.checked}
-                onChange={handleChange}
-              />
-              <strong>value added for 2</strong>
-            </label>
-            <label htmlFor="three">
-              <input
-                type="checkbox"
-                name="three"
-                value="value added for 3 "
-                checked={values.three.checked}
-                onChange={handleChange}
-              />
-              <strong>value added for 3</strong>
-            </label>
+          <div className="primary">
+            <button type="submit">Save</button>
           </div>
-        </div>
-        <div className="primary">
-          <button type="submit">Save</button>
         </div>
       </form>
+      <div>
+        <button onClick={signoutHandler}>Signout</button>
+      </div>
       {item ? (
         <table>
           <tbody>
@@ -133,9 +131,6 @@ function HomeScreen() {
           </tbody>
         </table>
       ) : null}
-      <div>
-        <button onClick={signoutHandler}>Signout</button>
-      </div>
     </div>
   );
 }

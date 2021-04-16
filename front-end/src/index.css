@@ -9,6 +9,9 @@ h2 {
   padding: 1rem;
   border-bottom: 1px solid;
 }
+.row.center > form {
+  background-color: #f6f6f6;
+}
 form {
   padding: 1rem;
   margin: 1rem;
@@ -45,8 +48,14 @@ button {
   margin: 0;
   padding: 1rem;
 }
+form > .box{
+  margin-top: 0;
+  display: grid;
+  justify-content: center;
+}
 .primary > button {
   margin-left: 10rem;
+  justify-content: end;
   margin-top: 1rem;
   width: 100px;
 }
@@ -118,4 +127,7 @@ tr:nth-child(even) {
   background-color: #dddddd;
   border: 1px solid #dddddd;
 }
-
+.row.center {
+  display: flex;
+  justify-content: center;
+}

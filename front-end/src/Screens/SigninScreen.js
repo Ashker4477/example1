@@ -1,34 +1,37 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
-import { signin } from "../Actions/userActions";
-import LoadingBox from "../components/LoadingBox";
-import MessageBox from "../components/MessageBox";
+import { UserContext } from "../Actions/userContext";
 
 function SigninScreen() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const userSignin = useSelector((state) => state.userSignin);
-  const { userInfo, loading, error } = userSignin;
+  const user = useContext(UserContext);
 
   const history = useHistory();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const submitHandler = (e) => {
+  const submitHandler = async(e) => {
     e.preventDefault();
-    dispatch(signin(email, password));
-  };
-  useEffect(() => {
-    if (userInfo) {
+    if(email === user.email && password===user.password){
+      localStorage.setItem("userlog",user)
       history.push("/");
     }
-  }, [history, userInfo]);
+    // dispatch(signin(email, password));
+  };
+  const userdet= localStorage.getItem("userlog")
+  ? JSON.parse(localStorage.getItem("userlog"))
+  : null;
+  useEffect(() => {
+    if (userdet) {
+      history.push("/");
+    }
+  }, [history, userdet]);
 
   return (
     <div className="signin">
       <form onSubmit={submitHandler}>
-        {error ? <MessageBox>{error}</MessageBox> : null}
+        {/* {error ? <MessageBox>{error}</MessageBox> : null} */}
         <div className="card">
           <h2>Login</h2>
           <div className="card-body">
@@ -53,7 +56,7 @@ function SigninScreen() {
               </div>
             </div>
             </div>
-            {loading ? <LoadingBox /> : null}
+            {/* {loading ? <LoadingBox /> : null} */}
           <button type="submit">Login</button>
           </div>
       </form>
