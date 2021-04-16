@@ -1,25 +1,7 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
 .d-flex {
   margin-top: 1rem;
   justify-content: center;
   align-items: center;
-}
-ul {
-  width: 100%;
-  max-width: 500px;
-  text-align: center;
-}
-li {
-  margin: 1rem;
-  padding: 1rem;
-  background-color: #fff;
 }
 
 h2 {
@@ -27,17 +9,11 @@ h2 {
   padding: 1rem;
   border-bottom: 1px solid;
 }
-
 form {
   padding: 1rem;
   margin: 1rem;
   width: 100%;
   max-width: 30rem;
-}
-select {
-  width: 100%;
-  max-width: 325px;
-  padding: 1rem;
 }
 .signin {
   display: flex;
@@ -46,11 +22,8 @@ select {
   align-items: center;
   background-color: #456;
 }
-.home {
-  display: flex;
-  min-height: 100vh;
+.col{
   justify-content: center;
-  background-color: #fdfbfb;
 }
 
 i {
@@ -61,16 +34,8 @@ i {
   background-color: #0f6eeb;
   position: sticky;
 }
-
-input[type="email"],
-input[type="password"],
-input[type="text"] {
-  padding: 0.75rem;
-  padding-left: 0px;
-  margin-left: 0px;
-  /* margin-bottom: 1rem; */
-  max-width: 380px;
-  width: 100%;
+.primary {
+  margin-left: 10rem;
 }
 
 button {
@@ -82,16 +47,17 @@ button {
   width: 100px;
 }
 
-
 label {
   padding: 1rem;
   margin: 0;
-  background-color: #ffffff;
-  justify-items: center;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffff;
 }
+
 .multiselect {
-  width: 200px;
+  width: 250px;
 }
 
 .selectBox {
@@ -117,10 +83,31 @@ label {
   border: 1px #dadada solid;
 }
 
-#checkboxes label {
-  display: block;
-}
-
 #checkboxes label:hover {
   background-color: #1e90ff;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 25rem;
+  margin: 1rem;
+}
+
+td{
+  border: 1px solid #f8f8f8;
+  text-align: center;
+}
+th {
+  border: 1px solid #dddddd;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+  border: 1px solid #dddddd;
+}
+.center{
+  display: flex;
+  justify-content: center;
 }
